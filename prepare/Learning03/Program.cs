@@ -1,27 +1,37 @@
 using System;
 using System.ComponentModel.DataAnnotations;
+using System.Data;
 using System.Runtime.InteropServices;
-class Program
-{
-    static void Main(string[] args)
-    {
-        Job job1 = new Job();
-        job1._jobTitle = "Software Engineer";
-        job1._company = "Microsoft";
-        job1._startYear = 2019;
-        job1._endYear = 2022;
-        
-        Job job2 = new Job();
-        job2._jobTitle = "Senior Vibecode Slop Reduction Specialist";
-        job2._company = "ProbablyWorks Inc.";
-        job2._startYear = 2022;
-        job2._endYear = 2023;
+Fraction test1 = new Fraction(); // 1/1
+Display(test1);
 
-        Resume myResume = new Resume();
-        myResume._name = "Colonel Sanders";
-        myResume.jobs.Add(job1);
-        myResume.jobs.Add(job2);
-        
-        myResume.Display();
-    }
+Fraction test2 = new Fraction(5); // 5/1
+Display(test2);
+
+Fraction test3 = new Fraction(3, 4); // 3/4
+Display(test3);
+
+
+// random fractions
+Random randomNumber = new Random();
+Fraction test5 = new Fraction();
+
+Console.WriteLine("========= Random Fractions =========");
+for (int i = 0; i < 20; i++)
+{
+    int top = randomNumber.Next(1, 11);
+    int bottom = randomNumber.Next(1, 11);
+    test5.SetTopNumber(top);
+    test5.SetBottomNumber(bottom);
+    Display(test5);
+}
+
+static void Display(Fraction fractionObject)
+{
+    string fractionStr = $"Fraction: {fractionObject.GetFractionString()}";
+    string fractionDec = $"Decimal: {fractionObject.GetDecimalValue()}";
+
+    Console.WriteLine(fractionStr);
+    Console.WriteLine(fractionDec);
+    Console.WriteLine();
 }
