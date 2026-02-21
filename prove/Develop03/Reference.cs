@@ -1,22 +1,48 @@
-using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
+using System.Dynamic;
+using System.Runtime.InteropServices.Marshalling;
 
 public class Reference
 {
-    // fields
-    string _book;
-    int _chapter;
-    int _startVerse;
-    int _endVerse;
+    //vars
+    private string _book;
+    private int _chapterNumber;
+    private int _startVerse;
+    private int _endVerse;
 
-    // constructors
-    Reference(string book, int chapter, int startVerse, int endVerse)
+    //constructors
+    public Reference(string book, int chapter, int start, int end)
     {
-        /* create a reference that has a
-        starting verse and ending verse. */
+        // reference if there is a start verse AND end verse.
+        _book = book;
+        _chapterNumber = chapter;
+        _startVerse = start;
+        _endVerse = end;
     }
 
-    Reference(string book, int chapter, int verse)
+    public Reference(string book, int chapter, int start)
     {
-        // create a reference with only a single verse
+        // reference if there is only start verse.
+        _book = book;
+        _chapterNumber = chapter;
+        _startVerse = start;
+    }
+
+
+    //methods
+    public void Display()
+    {
+        // get the reference as a string
+        string myRef;
+
+        if (_endVerse <= 0)
+        {
+            myRef = $"{_book} {_chapterNumber}:{_startVerse}";
+        } else
+        {
+            myRef = $"{_book} {_chapterNumber}:{_startVerse}-{_endVerse}";
+        }
+
+        Console.WriteLine(myRef);
     }
 }

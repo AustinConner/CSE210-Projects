@@ -1,19 +1,44 @@
+using System.Security.Cryptography;
+using System.Text;
+
 public class Word
 {
-    // fields
-    string _word;
-    bool _shown = true; // word starts as shown
+    // variables
+    private string _word;
+    private string _hiddenWord;
+    private bool _hidden;
 
-    // contructor
-    Word(string myWord)
+    // constructor
+    public Word(string word)
     {
-        // specify the word
-        _word = myWord;
+        _word = word;
+
+        // generate the hidden word
+        string hiddenWord = new string('_', _word.Length);
+        _hiddenWord = hiddenWord;
     }
 
     // methods
     public void Hide()
     {
-        _shown = false; // hides the word.
+        // hide the word
+        _hidden = true;
+    }
+
+    public string Get()
+    {
+        if (_hidden)
+        {
+            return _hiddenWord;
+        } else
+        {
+            return _word;
+        }
+    }
+
+    public bool IsVisible()
+    {
+        bool visible = !_hidden;
+        return visible;
     }
 }
