@@ -9,7 +9,6 @@ public class Program
 {
     static void Main(string[] args)
     {
-
         // Create a scripture to hold everyting
         Scripture scripture = new Scripture();
 
@@ -131,6 +130,4 @@ public class Program
             Console.Clear();
         }
     }
-
-    
 } 
