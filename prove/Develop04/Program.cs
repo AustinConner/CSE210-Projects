@@ -7,6 +7,13 @@ class Program
     static void Main(string[] args)
     {
                                
+        /* EXCEEDING THE REQUIREMENTS:
+        I added A LOT more questions and prompts to the program. I found UniCode braile dots for my
+        loading animation and changed the console encoding to UTF8 (see 'Activity.cs' line #108.)
+        I created a box for the main menu using Unicode box characters that I found online 
+        (I created/formatted it by hand 🥹). 
+        */
+
 
         // Selection Menu
         void ShowMenu()
