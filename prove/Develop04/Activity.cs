@@ -59,6 +59,10 @@ public class Activity
         ShowSpinner(5);
     }
 
+    /// <summary>
+    /// Loops a function for the duration of the activity.
+    /// </summary>
+    /// <param name="actionToLoop">Function you want to loop</param>
     public void Loop(Action actionToLoop)
     {
         Stopwatch stopwatch = new Stopwatch(); // timer
@@ -99,7 +103,7 @@ public class Activity
     /// Display loading spinner.
     /// </summary>
     /// <param name="seconds">Seconds the spinner is shown.</param>
-    public void ShowSpinner(int seconds)
+    static public void ShowSpinner(int seconds)
     {
         Console.OutputEncoding = System.Text.Encoding.UTF8;
         string glpyh = "⠋⠙⠹⠸⢰⣰⣠⣄⣆⡆⠇⠏";
@@ -161,11 +165,14 @@ public class Activity
     public string GetRandomItem<T>(List<T> list) 
     {
         int listLength = list.Count();
-        int index = _random.Next(listLength);
+        int index = _random.Next(0, listLength);
         string item = list[index].ToString();
         return item;
     }
 
+    /// <summary>
+    /// Ending message after user completes activity.
+    /// </summary>
     public void ShowClosingMessage()
     {
         Console.WriteLine($"You have completed {_duration} seconds of the {_name} activity!");

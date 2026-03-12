@@ -8,9 +8,9 @@ public class ListingActivity : Activity
     private List<string> _prompts;
 
 
-    public ListingActivity(string name, string description) : base (name, description)
+    public ListingActivity(string name, string description, List<string> prompts) : base (name, description)
     {
-        
+        _prompts = prompts;
     }
 
     // Start the activity.
@@ -25,14 +25,14 @@ public class ListingActivity : Activity
         Console.WriteLine($"--- {GetRandomItem(_prompts)} ---");
         Console.Write("You may begin in...");
         ShowCountdown(5);
+        Console.WriteLine();
 
         void input()
         {
             // get answers from user
             Console.Write("> ");
             Console.ReadLine();
-            _listedItems =+ 1;
-            Console.WriteLine();   
+            _listedItems += 1;  
         }
 
         Loop(input);

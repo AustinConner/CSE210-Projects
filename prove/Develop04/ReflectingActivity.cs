@@ -2,7 +2,6 @@ public class ReflectingActivity : Activity
 {
     //var
     private List<string> _prompts;
-    private List<string> _usedPrompts;
     private List<string> _questions;
 
     //methods
