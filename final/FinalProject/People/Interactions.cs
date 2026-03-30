@@ -1,0 +1,4 @@
+class Interactions
+{
+    // track interactions 
+}
