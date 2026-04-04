@@ -1,14 +1,6 @@
-// View for creating a new person
-using System.Diagnostics.CodeAnalysis;
-using System.Diagnostics.Contracts;
-using System.Dynamic;
-using System.IO.Pipes;
-using System.Linq.Expressions;
-using System.Reflection.Metadata;
-using System.Runtime.CompilerServices;
-using System.Runtime.InteropServices;
-using System.Xml.Serialization;
-
+/// <summary>
+/// Allows for someone to create a new person to add to the database.
+/// </summary>
 class CreateNewPerson() : View
 {
     // Dictonary to store specified values and print them later.
