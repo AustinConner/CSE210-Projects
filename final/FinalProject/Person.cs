@@ -28,6 +28,10 @@ class Person
     {
         _name = name;
     }
+    public string GetName()
+    {
+        return _name;
+    }
 
     // Set the relationship type
     public void DefineRelationship(string relationship)
@@ -94,6 +98,12 @@ class Person
             _pastEmployers.Add(_employer); // add to past employer
             _employer = employer; // define the new one
         }
+    }
+
+    // Add previous employers manually
+    public void AddPreviousEmployer(string previousEmployer)
+    {
+        _pastEmployers.Add(previousEmployer);
     }
 
     // Set birthday
