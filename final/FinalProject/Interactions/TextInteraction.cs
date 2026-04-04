@@ -4,6 +4,8 @@ class TextInteraction : Interaction
     public TextInteraction()
     {
         SetType("Text");
+        SetLocation("Text Messaging App");
+        
         base.BasicInteractionInfo();   
     }
 }

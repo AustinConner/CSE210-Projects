@@ -7,6 +7,8 @@ class VideoCallInteraction : Interaction
         Console.WriteLine("What platform did your video call take place?");
         string platform = Console.ReadLine();
 
+        SetLocation(platform);
+
         base.BasicInteractionInfo();   
     }
 }

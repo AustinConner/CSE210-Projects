@@ -25,6 +25,7 @@ class Interaction
     *                              METHODS                                *
     **********************************************************************/
     // Interaction information that will be the same accross all interactions
+    // TODO - Validate inputs
     protected void BasicInteractionInfo()
     {
         Console.WriteLine("What did you talk about?");
@@ -90,8 +91,9 @@ class Interaction
         // WIP
     }
 
-    public void GetInteraction()
+    // TODO: display the interaction. Different interactions might have a different scheme for being displayed.
+    public virtual void GetInteraction()
     {
-        // print interaction
+        // TODO
     }
 }
