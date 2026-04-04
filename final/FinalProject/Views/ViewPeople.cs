@@ -7,7 +7,8 @@ class ViewPeople() : View
         Header("All People");
         Console.WriteLine("Here is a list of all the people logged in Relationship Manager");
 
-        // TODO: List everyone in the relationship mangaer.
+        // Print a list of everyone in the relationship manager.
+        People.GetPeople();
 
         Console.ReadLine();
 
