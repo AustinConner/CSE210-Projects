@@ -4,8 +4,11 @@ class Program
 {
     static void Main(string[] args)
     {
-        Router myRouter = new();
+        // Make a place to actually store people
+        People myPeople = new();
 
+        // Create the router to route views
+        Router myRouter = new();
         myRouter.Run();
     }
 }
