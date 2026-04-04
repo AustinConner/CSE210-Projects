@@ -1,14 +1,28 @@
-class PeopleManager
+using System.Diagnostics.Contracts;
+using System.Runtime.Loader;
+
+class People
 {
     // Stores all the people created in the program
+    List<Person> _allPeople; 
 
-    // No console.anything
+    // Add person to manager
+    public void AddPerson(Person newPerson)
+    {
+        _allPeople.Add(newPerson);
+    }
 
-    // Add people
+    // remove person
+    public void RemovePerson(int index)
+    {
+        // TODO: remove someone from _allPeople list based on their index.
+    }
 
-    // remove people
+    // get people
+    public List<Person> GetPeople()
+    {
+        return _allPeople;
+    } 
 
-    // get all people
-
-    // search for people ?
+    // search for people ? (if time permits.)
 }
