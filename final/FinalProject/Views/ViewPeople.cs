@@ -6,7 +6,8 @@ class ViewPeople() : View
     {
         Header("All People");
         Console.WriteLine("Here is a list of all the people logged in Relationship Manager");
-        Console.WriteLine("People would be listedd here");
+
+        // TODO: List everyone in the relationship mangaer.
 
         Console.ReadLine();
 
