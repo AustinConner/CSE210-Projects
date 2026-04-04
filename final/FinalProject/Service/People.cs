@@ -4,7 +4,7 @@ using System.Runtime.Loader;
 class People
 {
     // Stores all the people created in the program
-    List<Person> _allPeople; 
+    private List<Person> _allPeople; 
 
     // Add person to manager
     public void AddPerson(Person newPerson)
