@@ -8,7 +8,7 @@ class Note
         _noteType = noteType;
     }
 
-    public void Add(string note)
+    public void SetContent(string note)
     {
         _noteContent = note;
     }
