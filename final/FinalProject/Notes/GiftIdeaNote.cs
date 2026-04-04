@@ -6,6 +6,7 @@ class GiftIdeaNote : Note
     {
         Console.WriteLine("Enter your gift idea:");
         string idea = Console.ReadLine();
+        
         base.SetType("Gift Idea");
         base.SetContent(idea);
     }

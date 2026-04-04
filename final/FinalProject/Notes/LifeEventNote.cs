@@ -8,6 +8,7 @@ class LifeEventNote : Note
     {
         Console.WriteLine("Enter the life event you want to log: ");
         string lifeEvent = Console.ReadLine();
+        
         base.SetType("Life Event");
         base.SetContent(lifeEvent);
 
