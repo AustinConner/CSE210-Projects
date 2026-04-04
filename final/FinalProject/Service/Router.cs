@@ -23,7 +23,7 @@ public class Router
          _views = new Dictionary<ViewName, View>()
         {
             // add items into the dictonary linking to other menus
-            {ViewName.MainMenu, new MainMenu() },
+            {ViewName.MainMenu, new MainMenu()},
             {ViewName.ViewPeople, new ViewPeople()}
         };
     }
