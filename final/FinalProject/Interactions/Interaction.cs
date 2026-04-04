@@ -1,4 +1,5 @@
 using System.ComponentModel.DataAnnotations;
+using System.Dynamic;
 
 class Interaction
 {
@@ -6,6 +7,9 @@ class Interaction
     // in person, video call, phone call, text
     private string _date; // When the interaction occureds
     private List<Note> _InteractionNotes;
+
+    private string _location;
+    // platform/place (park, Signal, Facebook)
 
     // idea: Custom interaction types
 
@@ -20,8 +24,15 @@ class Interaction
         _date = date;
     }
 
+    public void SetLocation(string location)
+    {
+        _location = location;
+    }
+
     public void AddNote()
     {
+        Console.WriteLine("Would you like to add any notes to this interaction?");
+        string answer = Console.ReadLine();
         Note newNote = new();
         _InteractionNotes.Add(newNote);
     }
@@ -33,8 +44,7 @@ class Interaction
 
     public void New()
     {
-        Console.WriteLine("What type of interaction would you like to log?")
-        
+        Console.WriteLine("What type of interaction would you like to log?");
     }
 
 }
