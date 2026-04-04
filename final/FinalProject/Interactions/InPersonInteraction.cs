@@ -6,16 +6,11 @@ class InPersonInteraction : Interaction
     // Where
     public void Add()
     {
+        SetType("In-Person");
+
         Console.WriteLine("Where did you see each other?");
         string location = Console.ReadLine();
 
-        Console.WriteLine("What date? ");
-        string date = Console.ReadLine();
-
-        Console.WriteLine("Why did you meet?");
-        string why = Console.ReadLine();
-
-        Console.WriteLine("Did you make any future plans?");
-        string plans = Console.ReadLine();
+        SetLocation(location);
     }
 }
