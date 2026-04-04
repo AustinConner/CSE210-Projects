@@ -1,0 +1,4 @@
+class InPersonInteraction : Interaction
+{
+    
+}
