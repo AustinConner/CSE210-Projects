@@ -14,6 +14,7 @@ class Interaction
         _interactionType = type;
     }
 
+    // date of interaction  
     public void SetDate(string date)
     {
         _date = date;
@@ -28,6 +29,12 @@ class Interaction
     public void RemoveNote()
     {
         // WIP
+    }
+
+    public void New()
+    {
+        Console.WriteLine("What type of interaction would you like to log?")
+        
     }
 
 }
