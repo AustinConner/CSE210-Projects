@@ -1,3 +1,5 @@
+using System.Runtime.ConstrainedExecution;
+
 /// <summary>
 /// Allows for someone to create a new person to add to the database.
 /// </summary>
@@ -9,25 +11,69 @@ class CreateNewPerson() : View
 
     public override ViewName Show()
     {
-        while (true)
-        {
+        // Clear the dictonary in case someone runs this to add multiple new people.
+        _userChoices.Clear();
 
-            /*
-            TODO: Show the things that the user is entering as Key: Value
-            pairs so that we can clear the console and see the current
-            state of things as a person is answering the questions.
-            */
-            break;
-        }
+        Header("Add Person");
+        GetName();
+        Console.Clear();
+        GetRelationshipType();
 
-        // Show at the end of the program.
+        Console.Clear();
+        AskAddHobby();
+
+        Console.Clear();
+        SetBirthday();
+
+        Console.Clear();
+        SetFavColor();
+
+        Console.Clear();
+        AskAddNote();
+
+        Console.Clear();
+        AskAddPartner();
+
+        Console.Clear();
+        AskAddChild();
+
+        Console.Clear();
+        AskAddParents();
+
+        Console.Clear();
+        AskAddEmployer();
+
+        Console.Clear();
+
+        SavePerson();
+
         return ViewName.MainMenu;
+    }
+    
+    // Save the new person to manager
+    public void SavePerson()
+    {
+     People.AddPerson(newPerson);   
     }
 
     // easily add items into the _userChoices dictonary for clean console UI
     private void Track(string key, string value)
     {
         _userChoices.Add(key, value);
+    }
+
+    // Print the currently set values
+    private void PrintSummary()
+    {
+        Console.Clear();
+        Console.WriteLine($"Details for {newPerson.GetName()}");
+
+        foreach (KeyValuePair<string, string> entry in _userChoices)
+        {
+            Console.WriteLine($"{entry.Key}: {entry.Value}");
+        }
+
+        Console.WriteLine("");
     }
 
     // get the persons name to add
@@ -43,6 +89,7 @@ class CreateNewPerson() : View
 
     private void GetRelationshipType()
     {
+        PrintSummary();
         Console.WriteLine($"How would you define your relationship with {newPerson.GetName()}?");
         Console.WriteLine("1. Acquaintance");
         Console.WriteLine("2. Friend");
@@ -78,6 +125,7 @@ class CreateNewPerson() : View
     // add hobbies?
     private void AskAddHobby()
     {
+        PrintSummary();
         Console.WriteLine($"Do you want to add any of {newPerson.GetName()}'s hobbies?");
         bool yes = InputService.YesNo();
 
@@ -114,6 +162,7 @@ class CreateNewPerson() : View
 
             if (!yes)
             {
+                Track("Hobbies", hobbies);
                 break;
             }
         }
@@ -121,6 +170,7 @@ class CreateNewPerson() : View
 
     private void AskAddNote()
     {
+        PrintSummary();
         Console.WriteLine($"Do you want to add any notes to {newPerson.GetName()}?");
         bool yes = InputService.YesNo();
         if (yes)
@@ -134,6 +184,7 @@ class CreateNewPerson() : View
     }
     private void AddNote()
     {
+        PrintSummary();
         int totalNotes = 0;
         
         while (true)
@@ -144,6 +195,7 @@ class CreateNewPerson() : View
 
     private void AskAddPartner()
     {
+        PrintSummary();
         Console.WriteLine($"Do you want to link a partner to {newPerson.GetName()} from your database?");
         bool yes = InputService.YesNo();
         if (yes)
@@ -164,6 +216,7 @@ class CreateNewPerson() : View
 
     private void AskAddChild()
     {
+        PrintSummary();
         Console.WriteLine($"Does {newPerson.GetName()} have children?");
         bool hasKids = InputService.YesNo();
         if (!hasKids)
@@ -191,6 +244,7 @@ class CreateNewPerson() : View
 
     private void AskAddParents()
     {
+        PrintSummary();
         Console.WriteLine($"Do you have {newPerson.GetName()}'s parents in your database?");
         bool parentsInDB = InputService.YesNo();
         if (!parentsInDB)
@@ -219,6 +273,7 @@ class CreateNewPerson() : View
 
     private void AskAddEmployer()
     {
+        PrintSummary(); 
         Console.WriteLine($"Do you want to add an employer for {newPerson.GetName()}?");
         bool addEmployer = InputService.YesNo();
         if (!addEmployer)
@@ -269,7 +324,8 @@ class CreateNewPerson() : View
 
     private void SetBirthday()
     {
-        Console.Write($"Do you want to set a birthday for {newPerson.GetName()}");
+        PrintSummary(); 
+        Console.WriteLine($"Do you want to set a birthday for {newPerson.GetName()}");
         bool yes = InputService.YesNo();
         if (yes)
         {
@@ -284,7 +340,8 @@ class CreateNewPerson() : View
     }
     private void SetFavColor()
     {
-        Console.Write($"Do you want to set a favorite color for {newPerson.GetName()}");
+        PrintSummary();
+        Console.WriteLine($"Do you want to set a favorite color for {newPerson.GetName()}");
         bool yes = InputService.YesNo();
         if (yes)
         {

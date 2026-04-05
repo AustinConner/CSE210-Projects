@@ -21,7 +21,7 @@ class MainMenu : View
                 return ViewName.ViewPeople;
 
                 case 2:
-                return ViewName.AddPerson;
+                return ViewName.CreateNewPerson;
 
                 case 3:
                 return ViewName.RemovePerson;

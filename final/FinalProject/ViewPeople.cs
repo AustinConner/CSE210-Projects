@@ -8,7 +8,7 @@ class ViewPeople() : View
         Console.WriteLine("Here is a list of all the people logged in Relationship Manager");
 
         // Print a list of everyone in the relationship manager.
-        People.GetPeople();
+        People.GetPeopleNumbered();
 
         Console.ReadLine();
 

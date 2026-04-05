@@ -7,14 +7,14 @@ class Person
     // What is the persons name?
     private string _name;
     private string _relationshipType; // Acquaintance, CoWorker, Friend, Partner
-    private List<string> _hobbies; // list of hobbies.
-    private List<Note> _importantNotes;
+    private List<string> _hobbies = new(); // list of hobbies.
+    private List<Note> _importantNotes = new();
     private Person _partner; // link to their partner in the database
-    private List<Person> _pastPartners; // I ain't judging (auto populates)
-    private List<Person> _children; // link to kids in the database
-    private List<Person> _parents; // Link to person's parents in db if you want
+    private List<Person> _pastPartners = new(); // I ain't judging (auto populates)
+    private List<Person> _children = new(); // link to kids in the database
+    private List<Person> _parents = new(); // Link to person's parents in db if you want
     private string _employer; // where person works
-    private List<string> _pastEmployers; // past employers for a person (auto populates)
+    private List<string> _pastEmployers = new(); // past employers for a person (auto populates)
     private string _birthday;
     private string _favoriteColor;
     private string _dateAdded; // when a person was added
@@ -22,6 +22,7 @@ class Person
     /* 
     METHODS
     */
+    
 
     // Set the name of a person
     public void SetName(string name)
@@ -37,6 +38,12 @@ class Person
     public void DefineRelationship(string relationship)
     {
         _relationshipType = relationship;
+    }
+
+    // Get a relationship
+    public string GetRelationship()
+    {
+        return _relationshipType;
     }
 
     // Add hobbies

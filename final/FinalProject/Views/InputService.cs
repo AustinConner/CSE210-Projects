@@ -55,10 +55,10 @@ static class InputService
 
         while (true)
         {
-            Console.WriteLine("Yes or No? (Y/N)");
+            Console.WriteLine("(Y)es or (N)o?");
             ConsoleKeyInfo input = Console.ReadKey();
 
-            if(input.Key == ConsoleKey.Y)
+            if(input.Key == ConsoleKey.Y) 
             {
                 return true;
             } else if (input.Key == ConsoleKey.N)
