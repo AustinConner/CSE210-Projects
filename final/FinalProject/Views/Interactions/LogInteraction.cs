@@ -9,6 +9,7 @@ class LogInteraction : View
         }
 
         Person person = State.GetSelectedPerson();
+        
         Header($"Log Interaction with {person.GetName()}");
 
         Console.WriteLine("What type of interaction was this?");

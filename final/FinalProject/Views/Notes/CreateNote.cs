@@ -4,8 +4,6 @@ class CreateNoteView : View
 {
     public override ViewName Show()
     {
-        Header("Create Note");
-
         // Check if person is selected
         if (State.GetSelectedPerson() == null)
         {
@@ -13,15 +11,17 @@ class CreateNoteView : View
             State.NextView(ViewName.CreateNote);
             return ViewName.SelectPerson;
         }
- 
-        Console.WriteLine("What type of a note would you like to create?");
 
+         Header($"Create Note for {State.GetSelectedPerson().GetName()}");
+
+        Console.WriteLine("What type of a note would you like to create?");
         Console.WriteLine("1. Gift Idea");
         Console.WriteLine("2. Interest Note");
         Console.WriteLine("3. Life Event Note");
         Console.WriteLine("4. Custom Note");
+        Console.WriteLine("5. Go Back");
 
-        int choice = InputService.GetMenuChoice(1,4);
+        int choice = InputService.GetMenuChoice(1,5);
 
         Note note;
         
@@ -46,15 +46,24 @@ class CreateNoteView : View
             break;
 
             case 4:
-            default:
             CustomNote customNote = new();
             customNote.Add();
             note = customNote;
             break;
+
+            case 5:
+            return State.GetPreviousView();
+
+            default:
+            CustomNote defaultNote = new();
+            defaultNote.Add();
+            note = defaultNote;
+            break;
+
         }
 
         State.GetSelectedPerson().AddNote(note);
 
-        return ViewName.PersonDetails;
+        return ViewName.ViewNotes;
     }
 }
