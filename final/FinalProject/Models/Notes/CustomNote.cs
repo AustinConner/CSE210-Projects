@@ -4,11 +4,8 @@ class CustomNote : Note
 {
     public void Add()
     {
-        Console.WriteLine("What is this note type?");
-        string type = Console.ReadLine();
-
-        Console.WriteLine("What do you want to attach to this note? ");
-        string content = Console.ReadLine();
+        string type = InputService.GetString("What is this note type? ");
+        string content = InputService.GetString("What do you want to attach to this note? ");
 
         base.SetType(type);
         base.SetContent(content);

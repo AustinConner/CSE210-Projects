@@ -10,9 +10,6 @@ using System.Xml.Serialization;
 /// </summary>
 public class Router
 {
-    // Set the current menu (this is the first menu when the program starts)
-    private ViewName _currentView = ViewName.MainMenu;
-
     // Create the menu list using the enum in "MenuList.cs" for the key and the "Menu" class for the value.
     private Dictionary<ViewName, View> _views;
 
@@ -24,16 +21,25 @@ public class Router
         {
             // add items into the dictonary linking to other menus
             {ViewName.MainMenu, new MainMenu()},
-            {ViewName.ViewPeople, new ViewPeople()}
+            {ViewName.ViewPeople, new ViewPeople()},
+            {ViewName.CreateNewPerson, new CreateNewPerson()},
+            {ViewName.RemovePerson, new RemovePerson()},
+            {ViewName.SelectPerson, new SelectPerson()},
+            {ViewName.CreateNote, new CreateNoteView()},
+            {ViewName.LogInteraction, new LogInteraction()},
+            {ViewName.ViewNotes, new ViewNotes()},
+            {ViewName.PersonDetails, new PersonDetails()},
+            {ViewName.EditPerson, new EditPerson()},
+            {ViewName.ViewInteractions, new ViewInteractions()}
         };
     }
 
     // Start the router.
     public void Run()
     {
-        while (_currentView != ViewName.Quit)
+        while (State.GetView() != ViewName.Quit)
         {
-            _currentView = _views[_currentView].Show();
+            State.SetView(_views[State.GetView()].Show());
         }
     }
 }

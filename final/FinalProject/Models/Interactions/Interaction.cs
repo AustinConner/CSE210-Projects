@@ -9,7 +9,7 @@ class Interaction
     private string _topic; // what types of things were discussed
     private string _date; // When the interaction occured
     private string _futurePlans;
-    private List<Note> _InteractionNotes;
+    private List<Note> _InteractionNotes = new();
     private string _location;
     // platform/place (park, Signal, Facebook)
     /**********************************************************************
@@ -28,21 +28,21 @@ class Interaction
     // TODO - Validate inputs
     protected void BasicInteractionInfo()
     {
-        Console.WriteLine("What did you talk about?");
-        string topic = Console.ReadLine();
+        string topic = InputService.GetString("What did you talk about?");
 
-        Console.WriteLine("When did you interact? (date)");
-        string date = Console.ReadLine();
+        string date = InputService.GetString("When did you interact? (date)");
 
-        Console.WriteLine("Did you make plans to meet in the future?");
-        string futurePlans = Console.ReadLine();
-
-        Console.WriteLine("Is there anything you want to make note of for this person since this interaction?");
-        string addtlNotes = Console.ReadLine();
+        bool hasFuturePlans = InputService.YesNo("Did you make plans to meet in the future?");
+        string futurePlans = "None";
+        if (hasFuturePlans)
+        {
+            futurePlans = InputService.GetString("What are the plans?");
+        }
 
         // Set the variables
         SetDate(date);
         SetTopic(topic);
+        FuturePlans(futurePlans);
 
         
     }
@@ -73,27 +73,47 @@ class Interaction
         _futurePlans = plans;
     }
 
-    protected void AddNote()
+    public string GetDate()
     {
-        // TODO: move this outside of the interaction class.
-        Console.WriteLine("Would you like to add any notes to this interaction?");
-        string answer = Console.ReadLine();
-        // move this somewhere.
-
-        Note newNote = new();
-        _InteractionNotes.Add(newNote);
+        return _date;
+    }
+    public string GetTopic()
+    {
+        return _topic;
+    }
+    public string GetFuturePlans()
+    {
+        return _futurePlans;
+    }
+    public string GetLocation()
+    {
+        return _location;
+    }
+    public string GetInteractionType()
+    {
+        return _interactionType;
     }
 
-    // Remove an interaction note
+    public void Load(string type, string date, string location, string topic, string futurePlans)
+    {
+        _interactionType = type;
+        _date = date;
+        _location = location;
+        _topic = topic;
+        _futurePlans = futurePlans;
+    }
 
     protected void RemoveNote()
     {
         // WIP
     }
 
-    // TODO: display the interaction. Different interactions might have a different scheme for being displayed.
-    public virtual void GetInteraction()
+    public virtual void Display()
     {
-        // TODO
+        Console.WriteLine($"┌─ {GetInteractionType()} — {GetDate()}");
+        Console.WriteLine($"│  Location:     {GetLocation()}");
+        Console.WriteLine($"│  Topic:        {GetTopic()}");
+        Console.WriteLine($"│  Future Plans: {GetFuturePlans()}");
+        Console.WriteLine($"└────────────────────────────────────────────────────");
     }
 }

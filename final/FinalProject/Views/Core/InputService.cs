@@ -1,3 +1,5 @@
+using System.ComponentModel;
+
 static class InputService
 {
     // Prompt the user and return a valid int. Reprompts on invalid input.
@@ -17,6 +19,8 @@ static class InputService
     // Prompt the user and return a non-empty string. Returns "" on blank input (caller should reprompt).
     public static string GetString(string prompt)
     {
+       while (true)
+       { 
         Console.Write(prompt);
         string input = Console.ReadLine();
         if (!string.IsNullOrWhiteSpace(input))
@@ -24,8 +28,7 @@ static class InputService
             return input.Trim();
         }
         Console.WriteLine("Input cannot be blank.");
-        Thread.Sleep(3000); // 3 seconds
-        return "";
+      }
     }
 
     // Prompt the user and return a string, allowing blank/empty input.
@@ -35,15 +38,39 @@ static class InputService
         return (Console.ReadLine() ?? "").Trim();
     }
 
-    // Prompt the user for a menu choice within a given range. Returns 0 on invalid input (caller should reprompt).
+    // Prompt the user for a menu choice within a given range. Loops until valid.
     public static int GetMenuChoice(int min, int max)
     {
-        int choice = GetInt($"Enter choice ({min}-{max}): ");
-        if (choice >= min && choice <= max)
-            return choice;
+        while (true)
+        {
+            Console.Write($"Enter choice ({min}-{max}): ");
+            string userInput = Console.ReadLine();
+            if (int.TryParse(userInput, out int choice) && choice >= min && choice <= max)
+                return choice;
 
-        Console.WriteLine($"Please enter a number between {min} and {max}.");
-        Thread.Sleep(3000); // 3 seconds
-        return 0;
+            Console.WriteLine($"Invalid input. Please enter a number between {min} and {max}.");
+        }
+    }
+
+    // Get answer to Yes or No question.
+    public static bool YesNo(string prompt)
+    {
+
+        while (true)
+        {
+            Console.WriteLine(prompt);
+            Console.WriteLine("(Y)es or (N)o?");
+            ConsoleKeyInfo input = Console.ReadKey();
+
+            if(input.Key == ConsoleKey.Y) 
+            {
+                return true;
+            } else if (input.Key == ConsoleKey.N)
+            {
+                return false;
+            } else {
+                Console.WriteLine($"{input.Key} is invalid. Only Y or N is valid.");
+            }
+        }
     }
 }
