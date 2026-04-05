@@ -54,8 +54,7 @@ class CreateNoteView : View
         }
 
         State.GetSelectedPerson().AddNote(note);
-        State.ClearSelectedPerson();
 
-        return ViewName.MainMenu;
+        return ViewName.PersonDetails;
     }
 }

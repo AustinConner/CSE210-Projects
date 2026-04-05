@@ -10,7 +10,8 @@ class InPersonInteraction : Interaction
 
         Console.WriteLine("Where did you see each other?");
         string location = Console.ReadLine();
-
         SetLocation(location);
+
+        BasicInteractionInfo();
     }
 }

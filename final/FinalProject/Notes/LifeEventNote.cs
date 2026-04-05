@@ -11,7 +11,5 @@ class LifeEventNote : Note
         
         base.SetType("Life Event");
         base.SetContent(lifeEvent);
-
-        // Maybe override something in the "note" class so that we can show a date?
     }
 }

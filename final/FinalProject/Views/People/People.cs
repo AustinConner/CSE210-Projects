@@ -22,6 +22,12 @@ static class People
         _allPeople.Remove(personYouWantToDelete);
     }
 
+    // clear all people
+    public static void Clear()
+    {
+        _allPeople.Clear();
+    }
+
     // get people
     public static List<Person> GetPeopleAsList()
     {
