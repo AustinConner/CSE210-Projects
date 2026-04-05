@@ -24,7 +24,8 @@ public class Router
             {ViewName.ViewPeople, new ViewPeople()},
             {ViewName.CreateNewPerson, new CreateNewPerson()},
             {ViewName.RemovePerson, new RemovePerson()},
-            {ViewName.SelectPerson, new SelectPerson()}
+            {ViewName.SelectPerson, new SelectPerson()},
+            {ViewName.CreateNote, new CreateNoteView()},
         };
     }
 
