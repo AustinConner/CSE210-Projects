@@ -12,7 +12,9 @@ I created the release with the following command:
 ```
 dotnet publish -c Release -r win-x64 --self-contained true -p:PublishSingleFile=true
 ```
-And published it. Easiest way to use the program without any installs (on Windows) would be to download that and run it.
+And published it as a release on GitHub. This is the easiest way to use the program without any installs (on Windows). Everything you need is bundled into one single file - ready to go!
+
+[Download Relationship Manager v1.0 Here.](https://github.com/AustinConner/CSE210-Projects/releases/tag/RMv1.0)
 
 ## How to Use
 
