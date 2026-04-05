@@ -1,3 +1,5 @@
+using System.ComponentModel;
+
 static class InputService
 {
     // Prompt the user and return a valid int. Reprompts on invalid input.
@@ -45,5 +47,26 @@ static class InputService
         Console.WriteLine($"Please enter a number between {min} and {max}.");
         Thread.Sleep(3000); // 3 seconds
         return 0;
+    }
+
+    // Get answer to Yes or No question.
+    public static bool YesNo()
+    {
+
+        while (true)
+        {
+            Console.WriteLine("(Y)es or (N)o?");
+            ConsoleKeyInfo input = Console.ReadKey();
+
+            if(input.Key == ConsoleKey.Y) 
+            {
+                return true;
+            } else if (input.Key == ConsoleKey.N)
+            {
+                return false;
+            } else {
+                Console.WriteLine($"{input.Key} is invalid. Only Y or N is valid.");
+            }
+        }
     }
 }

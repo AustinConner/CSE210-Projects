@@ -6,6 +6,7 @@ abstract class View
     // Display text in the header of a menu.
     public void Header(string text)
     {
+        Console.Clear();
         Console.WriteLine($"========== {text} ==========");
     }
 }

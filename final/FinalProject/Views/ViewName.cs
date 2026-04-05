@@ -2,7 +2,7 @@ enum ViewName
 {
     MainMenu,
     ViewPeople,
-    AddPerson,
+    CreateNewPerson,
     RemovePerson,
     LogInteraction,
     CreateNote,
