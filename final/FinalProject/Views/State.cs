@@ -1,4 +1,5 @@
 // Maintain the state of things when using router
+using System.IO.Compression;
 using System.Net;
 using System.Xml.Serialization;
 
@@ -32,6 +33,15 @@ static class State
     public static void SetNote(Note note)
     {
         _currentNote = note;
+    }
+
+    /* 
+    GETTERS
+    */
+
+    public static ViewName GetView()
+    {
+        return _currentView;
     }
 
 }

@@ -33,9 +33,9 @@ public class Router
     // Start the router.
     public void Run()
     {
-        while (_currentView != ViewName.Quit)
+        while (State.GetView() != ViewName.Quit)
         {
-            _currentView = _views[_currentView].Show();
+            State.SetView(_views[State.GetView()].Show());
         }
     }
 }
