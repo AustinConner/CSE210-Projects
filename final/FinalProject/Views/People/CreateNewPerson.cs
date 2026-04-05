@@ -30,9 +30,6 @@ class CreateNewPerson() : View
         SetFavColor();
 
         Console.Clear();
-        AskAddNote();
-
-        Console.Clear();
         AskAddPartner();
 
         Console.Clear();
@@ -166,31 +163,6 @@ class CreateNewPerson() : View
                 Track("Hobbies", hobbies);
                 break;
             }
-        }
-    }
-
-    private void AskAddNote()
-    {
-        PrintSummary();
-        Console.WriteLine($"Do you want to add any notes to {newPerson.GetName()}?");
-        bool yes = InputService.YesNo();
-        if (yes)
-        {
-            AddNote();
-        }
-        else
-        {
-            Track("Notes", "None added.");
-        }
-    }
-    private void AddNote()
-    {
-        PrintSummary();
-        int totalNotes = 0;
-        
-        while (true)
-        {
-            // TODO: Create "Note" class and view to create notes.
         }
     }
 
