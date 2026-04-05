@@ -11,8 +11,9 @@ class CreateNewPerson() : View
 
     public override ViewName Show()
     {
-        // Clear the dictonary in case someone runs this to add multiple new people.
+        // Reset for a new person in case this view is run multiple times.
         _userChoices.Clear();
+        newPerson = new();
 
         Header("Add Person");
         GetName();
