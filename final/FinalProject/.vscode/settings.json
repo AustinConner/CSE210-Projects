@@ -1,8 +1,5 @@
 {
     "files.exclude": {
-        "*.csproj": true,
-        "*.sln": true,
-        "bin": true,
-        "obj": true
+        "": true
     }
 }

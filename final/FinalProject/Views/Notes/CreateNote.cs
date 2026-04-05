@@ -13,7 +13,7 @@ class CreateNoteView : View
             State.NextView(ViewName.CreateNote);
             return ViewName.SelectPerson;
         }
-
+ 
         Console.WriteLine("What type of a note would you like to create?");
 
         Console.WriteLine("1. Gift Idea");
@@ -54,8 +54,7 @@ class CreateNoteView : View
         }
 
         State.GetSelectedPerson().AddNote(note);
-        State.ClearSelectedPerson();
 
-        return ViewName.MainMenu;
+        return ViewName.PersonDetails;
     }
 }

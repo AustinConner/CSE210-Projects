@@ -37,16 +37,18 @@ static class InputService
         return (Console.ReadLine() ?? "").Trim();
     }
 
-    // Prompt the user for a menu choice within a given range. Returns 0 on invalid input (caller should reprompt).
+    // Prompt the user for a menu choice within a given range. Loops until valid.
     public static int GetMenuChoice(int min, int max)
     {
-        int choice = GetInt($"Enter choice ({min}-{max}): ");
-        if (choice >= min && choice <= max)
-            return choice;
+        while (true)
+        {
+            Console.Write($"Enter choice ({min}-{max}): ");
+            string userInput = Console.ReadLine();
+            if (int.TryParse(userInput, out int choice) && choice >= min && choice <= max)
+                return choice;
 
-        Console.WriteLine($"Please enter a number between {min} and {max}.");
-        Thread.Sleep(3000); // 3 seconds
-        return 0;
+            Console.WriteLine($"Invalid input. Please enter a number between {min} and {max}.");
+        }
     }
 
     // Get answer to Yes or No question.

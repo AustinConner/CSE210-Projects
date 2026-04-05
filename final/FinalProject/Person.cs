@@ -1,3 +1,4 @@
+using System.Data.Common;
 using System.Dynamic;
 using System.IO.Pipes;
 using System.Runtime.CompilerServices;
@@ -17,7 +18,7 @@ class Person
     private List<string> _pastEmployers = new(); // past employers for a person (auto populates)
     private string _birthday;
     private string _favoriteColor;
-    private string _dateAdded; // when a person was added
+    private List<Interaction> _interactions = new();
 
     /* 
     METHODS
@@ -52,10 +53,46 @@ class Person
         _hobbies.Add(hobby);
     }
 
+    public string GetHobbies()
+    {
+        if (_hobbies.Count == 0) return "None";
+        return string.Join(", ", _hobbies);
+    }
+
     // Add notes
     public void AddNote(Note newNote)
     {
         _importantNotes.Add(newNote);
+    }
+
+    public int GetNoteCount()
+    {
+        return _importantNotes.Count();
+    }
+
+    public List<Note> GetNotes()
+    {
+        return _importantNotes;
+    }
+
+    public void RemoveNote(Note note)
+    {
+        _importantNotes.Remove(note);
+    }
+
+    public void AddInteraction(Interaction interaction)
+    {
+        _interactions.Add(interaction);
+    }
+
+    public List<Interaction> GetInteractions()
+    {
+        return _interactions;
+    }
+
+    public int GetInteractionCount()
+    {
+        return _interactions.Count;
     }
 
     // Add a partner
@@ -74,10 +111,22 @@ class Person
         }
     }
 
+    public string GetPartner()
+    {
+        if (_partner == null) return "None";
+        return _partner.GetName();
+    }
+
     // Add child to person
     public void AddChild(Person child)
     {
         _children.Add(child);
+    }
+
+    public string GetChildren()
+    {
+        if (_children.Count == 0) return "None";
+        return string.Join(", ", _children);
     }
 
     // Add partents to a person
@@ -89,6 +138,12 @@ class Person
         is a step parent.
         */
         _parents.Add(parent);
+    }
+
+    public string GetParents()
+    {
+        if (_parents.Count == 0) return "None";
+        return string.Join(", ", _parents);
     }
 
     // Add employer
@@ -106,6 +161,11 @@ class Person
             _employer = employer; // define the new one
         }
     }
+    public string GetEmployeer()
+    {
+        if (_employer == null) return "None";
+        return _employer;
+    }
 
     // Add previous employers manually
     public void AddPreviousEmployer(string previousEmployer)
@@ -113,16 +173,48 @@ class Person
         _pastEmployers.Add(previousEmployer);
     }
 
+    public List<string> GetPastEmployers()
+    {
+        return _pastEmployers;
+    }
+    public List<Person> GetChildrenList()
+    {
+        return _children;
+    }
+    public List<Person> GetParentsList()
+    {
+        return _parents;
+    }
+    public List<Person> GetPastPartners()
+    {
+        return _pastPartners;
+    }
+    public List<string> GetHobbiesList()
+    {
+        return _hobbies;
+    }
+
     // Set birthday
     public void SetBirthday(string birthday)
     {
         _birthday = birthday;
+    }
+    public string GetBirthday()
+    {
+        if (_birthday == null) return "None";
+        return _birthday;
     }
 
     // Set fav color
     public void SetFavColor(string favoriteColor)
     {
         _favoriteColor = favoriteColor;
+    }
+
+    public string GetFavoriteColor()
+    {
+        if (_favoriteColor == null) return "None";
+        return _favoriteColor;
     }
 
     // Set date person was added.

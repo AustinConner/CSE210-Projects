@@ -1,14 +1,13 @@
 class VideoCallInteraction : Interaction
 {
-    public VideoCallInteraction()
+    public void Add()
     {
-        SetType("Video-Call");
+        SetType("Video Call");
 
-        Console.WriteLine("What platform did your video call take place?");
+        Console.WriteLine("What platform did your video call take place on?");
         string platform = Console.ReadLine();
-
         SetLocation(platform);
 
-        base.BasicInteractionInfo();   
+        BasicInteractionInfo();
     }
 }

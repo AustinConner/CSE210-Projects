@@ -5,13 +5,16 @@ class ViewPeople() : View
     public override ViewName Show()
     {
         Header("All People");
-        Console.WriteLine("Here is a list of all the people logged in Relationship Manager");
+        if (People.GetCount() == 0)
+        {
+            Console.WriteLine("You don't have anyone added yet. Add some people first.");
+            Console.WriteLine("Press enter to continue...");
+            Console.ReadLine();
+            return ViewName.MainMenu;
+        }
 
-        // Print a list of everyone in the relationship manager.
-        People.GetPeopleNumbered();
-
-        Console.ReadLine();
-
-        return ViewName.MainMenu;
+        Console.WriteLine("Select a person to view their details.");
+        State.NextView(ViewName.PersonDetails);
+        return ViewName.SelectPerson;
     }
 }

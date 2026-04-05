@@ -18,4 +18,24 @@ class Note
     {
         _addDate = date;
     }
+
+    public void Display()
+    {
+        Console.WriteLine($"[{_noteType}] {_noteContent}");
+    }
+
+    public string GetNoteType()
+    {
+        return _noteType;
+    }
+    public string GetNoteContent()
+    {
+        return _noteContent;
+    }
+
+    public void Load(string type, string content)
+    {
+        _noteType = type;
+        _noteContent = content;
+    }
 }

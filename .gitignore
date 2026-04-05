@@ -453,3 +453,5 @@ $RECYCLE.BIN/
 !.vscode/launch.json
 !.vscode/extensions.json
 final/FinalProject/endgoal.md
+final/FinalProject/.vscode/settings.json
+.gitignore
