@@ -19,6 +19,8 @@ static class InputService
     // Prompt the user and return a non-empty string. Returns "" on blank input (caller should reprompt).
     public static string GetString(string prompt)
     {
+       while (true)
+       { 
         Console.Write(prompt);
         string input = Console.ReadLine();
         if (!string.IsNullOrWhiteSpace(input))
@@ -26,8 +28,7 @@ static class InputService
             return input.Trim();
         }
         Console.WriteLine("Input cannot be blank.");
-        Thread.Sleep(3000); // 3 seconds
-        return "";
+      }
     }
 
     // Prompt the user and return a string, allowing blank/empty input.

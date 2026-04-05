@@ -20,8 +20,7 @@ static class PersonPrompts
 
     public static void GetName(Person person)
     {
-        Console.WriteLine("What is the person's name?");
-        string name = Console.ReadLine();
+        string name = InputService.GetString("What is the person's name? ");
         person.SetName(name);
     }
 
@@ -66,8 +65,7 @@ static class PersonPrompts
 
         while (true)
         {
-            Console.WriteLine($"Enter a hobby for {person.GetName()}:");
-            string hobby = Console.ReadLine();
+            string hobby = InputService.GetString($"Enter a hobby for {person.GetName()}: ");
             person.AddHobby(hobby);
 
             Console.WriteLine("Add another hobby?");
@@ -81,8 +79,7 @@ static class PersonPrompts
         bool yes = InputService.YesNo();
         if (!yes) return;
 
-        Console.WriteLine($"When is {person.GetName()}'s birthday?");
-        string bday = Console.ReadLine();
+        string bday = InputService.GetString($"When is {person.GetName()}'s birthday? ");
         person.SetBirthday(bday);
     }
 
@@ -92,8 +89,7 @@ static class PersonPrompts
         bool yes = InputService.YesNo();
         if (!yes) return;
 
-        Console.WriteLine($"What is {person.GetName()}'s favorite color?");
-        string color = Console.ReadLine();
+        string color = InputService.GetString($"What is {person.GetName()}'s favorite color? ");
         person.SetFavColor(color);
     }
 
@@ -164,8 +160,7 @@ static class PersonPrompts
         bool yes = InputService.YesNo();
         if (!yes) return;
 
-        Console.WriteLine($"What is {person.GetName()}'s current employer?");
-        string employer = Console.ReadLine();
+        string employer = InputService.GetString($"What is {person.GetName()}'s current employer? ");
         person.AddEmployer(employer);
 
         while (true)
@@ -173,8 +168,7 @@ static class PersonPrompts
             Console.WriteLine("Add a previous employer?");
             if (!InputService.YesNo()) break;
 
-            Console.WriteLine("Enter previous employer:");
-            string past = Console.ReadLine();
+            string past = InputService.GetString("Enter previous employer: ");
             person.AddPreviousEmployer(past);
         }
     }

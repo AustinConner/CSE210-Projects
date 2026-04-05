@@ -4,13 +4,11 @@ class TextInteraction : Interaction
     {
         SetType("Text");
         SetLocation("Text");
-
-        Console.WriteLine("What did you text about?");
-        string topic = Console.ReadLine();
+        
+        string topic = InputService.GetString("What did you text about?");
         SetTopic(topic);
 
-        Console.WriteLine("When did this happen? (date)");
-        string date = Console.ReadLine();
+        string date = InputService.GetString("When did this happen? (date): ");
         SetDate(date);
 
         Console.WriteLine("Did you make plans to meet in the future?");
@@ -18,8 +16,7 @@ class TextInteraction : Interaction
         string futurePlans = "None";
         if (hasFuturePlans)
         {
-            Console.WriteLine("What are the plans?");
-            futurePlans = Console.ReadLine();
+            futurePlans = InputService.GetString("What are the plans? ");
         }
         FuturePlans(futurePlans);
     }

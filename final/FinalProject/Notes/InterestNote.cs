@@ -3,8 +3,7 @@ class InterestNote : Note
     // prompt the user for questions related to this note.
     public void Add()
     {
-        Console.WriteLine("Write the interst you want to log: ");
-        string interest = Console.ReadLine();
+        string interest = InputService.GetString("Write the interest you want to log: ");
 
         base.SetType("Interest");
         base.SetContent(interest);

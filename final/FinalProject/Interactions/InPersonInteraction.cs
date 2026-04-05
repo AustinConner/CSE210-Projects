@@ -8,8 +8,7 @@ class InPersonInteraction : Interaction
     {
         SetType("In-Person");
 
-        Console.WriteLine("Where did you see each other?");
-        string location = Console.ReadLine();
+        string location = InputService.GetString("Where did you see each other? ");
         SetLocation(location);
 
         BasicInteractionInfo();
