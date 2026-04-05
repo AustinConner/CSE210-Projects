@@ -103,6 +103,7 @@ static class PersonPrompts
         int sel = InputService.GetMenuChoice(1, People.GetCount());
         Person partner = People.GetPeopleAsList()[sel - 1];
         person.AddPartner(partner);
+        partner.AddPartner(person);
     }
 
     public static void LinkChildren(Person person)
