@@ -5,11 +5,14 @@ using System.Xml.Serialization;
 
 static class State
 {
-    // current menu
-    private static ViewName _currentView = ViewName.MainMenu; // setting to main menu because that's the first state the program needs to start in. It'll be overridden. 
+    // current view
+    private static ViewName _currentView = ViewName.MainMenu; // setting to main menu because that's the first state the program needs to start in. It'll be overridden.
 
-    // Currently selected person
-    private static int _selectedPerson;
+    // next view 
+    private static ViewName _nextView;
+
+    // selected person
+    private static Person _selectedPerson;
 
     // Current Note
     private static Note _currentNote;
@@ -24,9 +27,15 @@ static class State
     }
 
     // Select a person
-    private static void SelectPerson(int index)
+    public static void SelectPerson(Person selectedPerson)
     {
-        _selectedPerson = index;
+        _selectedPerson = selectedPerson;
+    }
+
+    // Clear selected person
+    public static void ClearSelectedPerson()
+    {
+        _selectedPerson = null;
     }
 
     // Set a current note
@@ -35,6 +44,13 @@ static class State
         _currentNote = note;
     }
 
+    // set NextView
+    public static void NextView(ViewName nextView)
+    {
+        _nextView = nextView;
+    }
+
+
     /* 
     GETTERS
     */
@@ -42,6 +58,16 @@ static class State
     public static ViewName GetView()
     {
         return _currentView;
+    }
+
+    public static ViewName GetNextView()
+    {
+        return _nextView;
+    }
+
+    public static Person GetSelectedPerson()
+    {
+        return _selectedPerson;
     }
 
 }

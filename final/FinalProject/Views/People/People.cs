@@ -17,9 +17,9 @@ static class People
     }
 
     // remove person
-    public static void RemovePerson(int index)
+    public static void RemovePerson(Person personYouWantToDelete)
     {
-        // TODO: remove someone from _allPeople list based on their index.
+        _allPeople.Remove(personYouWantToDelete);
     }
 
     // get people

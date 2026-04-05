@@ -6,5 +6,6 @@ enum ViewName
     RemovePerson,
     LogInteraction,
     CreateNote,
+    SelectPerson,
     Quit,
 }
