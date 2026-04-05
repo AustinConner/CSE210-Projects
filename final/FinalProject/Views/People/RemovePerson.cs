@@ -16,10 +16,9 @@ class RemovePerson : View
         } else
         {
             Console.WriteLine($"{State.GetSelectedPerson().GetName()} > {State.GetSelectedPerson().GetRelationship()}");
-            Console.WriteLine("Are you sure you want to delete this person from relationship manager? You can't undo this!");
-            bool yes = InputService.YesNo();
+            bool yes = InputService.YesNo("Are you sure you want to delete this person from relationship manager? You can't undo this!");
             Console.WriteLine();
-            
+
             if (yes)
             {
                 People.RemovePerson(State.GetSelectedPerson());
@@ -28,8 +27,7 @@ class RemovePerson : View
             }
             else
             {
-                Console.WriteLine("Do you want to select someone else to delete?");
-                bool deleteSomeoneElse = InputService.YesNo();
+                bool deleteSomeoneElse = InputService.YesNo("Do you want to select someone else to delete?");
                 if (deleteSomeoneElse)
                 {
                     State.ClearSelectedPerson();

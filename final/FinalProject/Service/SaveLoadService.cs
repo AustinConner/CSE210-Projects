@@ -7,6 +7,8 @@ static class SaveLoadService
 
     public static void Save()
     {
+        Console.Clear();
+        Console.WriteLine("========== Save Data ==========");
         List<string> lines = new();
 
         foreach (Person person in People.GetPeopleAsList())
@@ -82,8 +84,11 @@ static class SaveLoadService
 
     public static void Load()
     {
+        Console.Clear();
+        Console.WriteLine("========== Load Data ==========");
         if (!File.Exists(_filePath))
         {
+            Console.WriteLine("No save file found...");
             return;
         }
 

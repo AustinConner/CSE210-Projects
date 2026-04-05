@@ -53,11 +53,12 @@ static class InputService
     }
 
     // Get answer to Yes or No question.
-    public static bool YesNo()
+    public static bool YesNo(string prompt)
     {
 
         while (true)
         {
+            Console.WriteLine(prompt);
             Console.WriteLine("(Y)es or (N)o?");
             ConsoleKeyInfo input = Console.ReadKey();
 

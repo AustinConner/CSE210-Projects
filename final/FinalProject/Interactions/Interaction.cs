@@ -32,8 +32,7 @@ class Interaction
 
         string date = InputService.GetString("When did you interact? (date)");
 
-        Console.WriteLine("Did you make plans to meet in the future?");
-        bool hasFuturePlans = InputService.YesNo();
+        bool hasFuturePlans = InputService.YesNo("Did you make plans to meet in the future?");
         string futurePlans = "None";
         if (hasFuturePlans)
         {

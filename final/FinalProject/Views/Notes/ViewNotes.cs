@@ -39,8 +39,7 @@ class ViewNotes : View
             int menuChoice = InputService.GetMenuChoice(1, notes.Count);
             Note toDelete = notes[menuChoice - 1];
             toDelete.Display();
-            Console.WriteLine("Are you sure you want to delete this note?");
-            bool yes = InputService.YesNo();
+            bool yes = InputService.YesNo("Are you sure you want to delete this note?");
             if (yes)
             {
                 person.RemoveNote(toDelete);

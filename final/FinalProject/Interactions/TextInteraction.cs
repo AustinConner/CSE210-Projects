@@ -4,15 +4,14 @@ class TextInteraction : Interaction
     {
         SetType("Text");
         SetLocation("Text");
-        
+
         string topic = InputService.GetString("What did you text about?");
         SetTopic(topic);
 
         string date = InputService.GetString("When did this happen? (date): ");
         SetDate(date);
 
-        Console.WriteLine("Did you make plans to meet in the future?");
-        bool hasFuturePlans = InputService.YesNo();
+        bool hasFuturePlans = InputService.YesNo("Did you make plans to meet in the future?");
         string futurePlans = "None";
         if (hasFuturePlans)
         {
