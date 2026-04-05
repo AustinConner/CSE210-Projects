@@ -60,7 +60,7 @@ static class InputService
         {
             Console.WriteLine(prompt);
             Console.WriteLine("(Y)es or (N)o?");
-            ConsoleKeyInfo input = Console.ReadKey();
+            ConsoleKeyInfo input = Console.ReadKey(true);
 
             if(input.Key == ConsoleKey.Y) 
             {
