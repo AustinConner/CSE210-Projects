@@ -28,19 +28,15 @@ class Interaction
     // TODO - Validate inputs
     protected void BasicInteractionInfo()
     {
-        Console.WriteLine("What did you talk about?");
-        string topic = Console.ReadLine();
+        string topic = InputService.GetString("What did you talk about?");
 
-        Console.WriteLine("When did you interact? (date)");
-        string date = Console.ReadLine();
+        string date = InputService.GetString("When did you interact? (date)");
 
-        Console.WriteLine("Did you make plans to meet in the future?");
-        bool hasFuturePlans = InputService.YesNo();
+        bool hasFuturePlans = InputService.YesNo("Did you make plans to meet in the future?");
         string futurePlans = "None";
         if (hasFuturePlans)
         {
-            Console.WriteLine("What are the plans?");
-            futurePlans = Console.ReadLine();
+            futurePlans = InputService.GetString("What are the plans?");
         }
 
         // Set the variables
@@ -106,19 +102,6 @@ class Interaction
         _topic = topic;
         _futurePlans = futurePlans;
     }
-
-    protected void AddNote()
-    {
-        // TODO: move this outside of the interaction class.
-        Console.WriteLine("Would you like to add any notes to this interaction?");
-        string answer = Console.ReadLine();
-        // move this somewhere.
-
-        Note newNote = new();
-        _InteractionNotes.Add(newNote);
-    }
-
-    // Remove an interaction note
 
     protected void RemoveNote()
     {

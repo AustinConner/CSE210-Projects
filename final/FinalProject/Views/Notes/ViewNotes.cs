@@ -29,25 +29,30 @@ class ViewNotes : View
         }
 
         Console.WriteLine();
-        Console.WriteLine("1. Delete a note");
-        Console.WriteLine("2. Back");
-        int choice = InputService.GetMenuChoice(1, 2);
+        Console.WriteLine("1. Add a note");
+        Console.WriteLine("2. Delete a note");
+        Console.WriteLine("3. Back");
+        int choice = InputService.GetMenuChoice(1, 3);
 
-        if (choice == 1 && notes.Count > 0)
+        switch (choice)
         {
-            Console.WriteLine("Select the number of the note to delete:");
-            int menuChoice = InputService.GetMenuChoice(1, notes.Count);
-            Note toDelete = notes[menuChoice - 1];
-            toDelete.Display();
-            Console.WriteLine("Are you sure you want to delete this note?");
-            bool yes = InputService.YesNo();
-            if (yes)
-            {
-                person.RemoveNote(toDelete);
-            }
-            return ViewName.ViewNotes; // refresh
-        }
+            case 1:
+                return ViewName.CreateNote;
 
-        return ViewName.PersonDetails;
+            case 2:
+                if (notes.Count == 0) return ViewName.ViewNotes;
+                Console.WriteLine("Select the number of the note to delete:");
+                int menuChoice = InputService.GetMenuChoice(1, notes.Count);
+                Note toDelete = notes[menuChoice - 1];
+                toDelete.Display();
+                if (InputService.YesNo("Are you sure you want to delete this note?"))
+                {
+                    person.RemoveNote(toDelete);
+                }
+                return ViewName.ViewNotes;
+
+            default:
+                return ViewName.PersonDetails;
+        }
     }
 }

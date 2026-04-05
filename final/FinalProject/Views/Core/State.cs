@@ -8,14 +8,14 @@ static class State
     // current view
     private static ViewName _currentView = ViewName.MainMenu; // setting to main menu because that's the first state the program needs to start in. It'll be overridden.
 
-    // next view 
+    // previous view
+    private static ViewName _previousView = ViewName.MainMenu;
+
+    // next view
     private static ViewName _nextView;
 
     // selected person
     private static Person _selectedPerson;
-
-    // Current Note
-    private static Note _currentNote;
 
     /* 
     Methods
@@ -23,6 +23,7 @@ static class State
     // Set the current view;
     public static void SetView(ViewName view)
     {
+        _previousView = _currentView;
         _currentView = view;
     }
 
@@ -36,12 +37,6 @@ static class State
     public static void ClearSelectedPerson()
     {
         _selectedPerson = null;
-    }
-
-    // Set a current note
-    public static void SetNote(Note note)
-    {
-        _currentNote = note;
     }
 
     // set NextView
@@ -63,6 +58,11 @@ static class State
     public static ViewName GetNextView()
     {
         return _nextView;
+    }
+
+    public static ViewName GetPreviousView()
+    {
+        return _previousView;
     }
 
     public static Person GetSelectedPerson()

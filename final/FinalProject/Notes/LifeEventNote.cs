@@ -6,8 +6,7 @@ class LifeEventNote : Note
     // prompt the user for questions related to this note.
     public void Add()
     {
-        Console.WriteLine("Enter the life event you want to log: ");
-        string lifeEvent = Console.ReadLine();
+        string lifeEvent = InputService.GetString("Enter the life event you want to log: ");
         
         base.SetType("Life Event");
         base.SetContent(lifeEvent);

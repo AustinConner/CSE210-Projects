@@ -4,8 +4,7 @@ class GiftIdeaNote : Note
 
     public void Add()
     {
-        Console.WriteLine("Enter your gift idea:");
-        string idea = Console.ReadLine();
+        string idea = InputService.GetString("Enter your gift idea: ");
         
         base.SetType("Gift Idea");
         base.SetContent(idea);

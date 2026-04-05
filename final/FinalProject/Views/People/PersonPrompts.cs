@@ -20,8 +20,7 @@ static class PersonPrompts
 
     public static void GetName(Person person)
     {
-        Console.WriteLine("What is the person's name?");
-        string name = Console.ReadLine();
+        string name = InputService.GetString("What is the person's name? ");
         person.SetName(name);
     }
 
@@ -60,40 +59,33 @@ static class PersonPrompts
 
     public static void AddHobbies(Person person)
     {
-        Console.WriteLine($"Do you want to add hobbies for {person.GetName()}?");
-        bool yes = InputService.YesNo();
+        bool yes = InputService.YesNo($"Do you want to add hobbies for {person.GetName()}?");
         if (!yes) return;
 
         while (true)
         {
-            Console.WriteLine($"Enter a hobby for {person.GetName()}:");
-            string hobby = Console.ReadLine();
+            string hobby = InputService.GetString($"Enter a hobby for {person.GetName()}: ");
             person.AddHobby(hobby);
 
-            Console.WriteLine("Add another hobby?");
-            if (!InputService.YesNo()) break;
+            if (!InputService.YesNo("Add another hobby?")) break;
         }
     }
 
     public static void SetBirthday(Person person)
     {
-        Console.WriteLine($"Do you want to set a birthday for {person.GetName()}?");
-        bool yes = InputService.YesNo();
+        bool yes = InputService.YesNo($"Do you want to set a birthday for {person.GetName()}?");
         if (!yes) return;
 
-        Console.WriteLine($"When is {person.GetName()}'s birthday?");
-        string bday = Console.ReadLine();
+        string bday = InputService.GetString($"When is {person.GetName()}'s birthday? ");
         person.SetBirthday(bday);
     }
 
     public static void SetFavColor(Person person)
     {
-        Console.WriteLine($"Do you want to set a favorite color for {person.GetName()}?");
-        bool yes = InputService.YesNo();
+        bool yes = InputService.YesNo($"Do you want to set a favorite color for {person.GetName()}?");
         if (!yes) return;
 
-        Console.WriteLine($"What is {person.GetName()}'s favorite color?");
-        string color = Console.ReadLine();
+        string color = InputService.GetString($"What is {person.GetName()}'s favorite color? ");
         person.SetFavColor(color);
     }
 
@@ -105,13 +97,13 @@ static class PersonPrompts
             return;
         }
 
-        Console.WriteLine($"Do you want to link a partner to {person.GetName()}?");
-        if (!InputService.YesNo()) return;
+        if (!InputService.YesNo($"Do you want to link a partner to {person.GetName()}?")) return;
 
         People.GetPeopleNumbered();
         int sel = InputService.GetMenuChoice(1, People.GetCount());
         Person partner = People.GetPeopleAsList()[sel - 1];
         person.AddPartner(partner);
+        partner.AddPartner(person);
     }
 
     public static void LinkChildren(Person person)
@@ -122,8 +114,7 @@ static class PersonPrompts
             return;
         }
 
-        Console.WriteLine($"Does {person.GetName()} have children in the database?");
-        if (!InputService.YesNo()) return;
+        if (!InputService.YesNo($"Does {person.GetName()} have children in the database?")) return;
 
         while (true)
         {
@@ -131,8 +122,7 @@ static class PersonPrompts
             int sel = InputService.GetMenuChoice(1, People.GetCount());
             person.AddChild(People.GetPeopleAsList()[sel - 1]);
 
-            Console.WriteLine("Link another child?");
-            if (!InputService.YesNo()) break;
+            if (!InputService.YesNo("Link another child?")) break;
         }
     }
 
@@ -144,8 +134,7 @@ static class PersonPrompts
             return;
         }
 
-        Console.WriteLine($"Do you want to link parents for {person.GetName()}?");
-        if (!InputService.YesNo()) return;
+        if (!InputService.YesNo($"Do you want to link parents for {person.GetName()}?")) return;
 
         while (true)
         {
@@ -153,28 +142,23 @@ static class PersonPrompts
             int sel = InputService.GetMenuChoice(1, People.GetCount());
             person.AddParent(People.GetPeopleAsList()[sel - 1]);
 
-            Console.WriteLine("Link another parent?");
-            if (!InputService.YesNo()) break;
+            if (!InputService.YesNo("Link another parent?")) break;
         }
     }
 
     public static void AddEmployer(Person person)
     {
-        Console.WriteLine($"Do you want to add an employer for {person.GetName()}?");
-        bool yes = InputService.YesNo();
+        bool yes = InputService.YesNo($"Do you want to add an employer for {person.GetName()}?");
         if (!yes) return;
 
-        Console.WriteLine($"What is {person.GetName()}'s current employer?");
-        string employer = Console.ReadLine();
+        string employer = InputService.GetString($"What is {person.GetName()}'s current employer? ");
         person.AddEmployer(employer);
 
         while (true)
         {
-            Console.WriteLine("Add a previous employer?");
-            if (!InputService.YesNo()) break;
+            if (!InputService.YesNo("Add a previous employer?")) break;
 
-            Console.WriteLine("Enter previous employer:");
-            string past = Console.ReadLine();
+            string past = InputService.GetString("Enter previous employer: ");
             person.AddPreviousEmployer(past);
         }
     }

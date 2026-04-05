@@ -36,19 +36,19 @@ class PersonDetails : View
 
             Console.WriteLine();
             Console.WriteLine("1. Add a note");
-            Console.WriteLine("2. Log interaction");
-            Console.WriteLine("3. View notes");
+            Console.WriteLine("2. View notes");
+            Console.WriteLine("3. Log interaction");
             Console.WriteLine("4. View interactions");
-            Console.WriteLine("5. Edit person");
-            Console.WriteLine("6. Back to people");
-            Console.WriteLine("7. Back to main menu");
+            Console.WriteLine("5. Edit person details");
+            Console.WriteLine("6. Return to People List");
+            Console.WriteLine("7. Return to Main Menu");
             int choice = InputService.GetMenuChoice(1, 7);
 
             switch (choice)
             {
                 case 1: return ViewName.CreateNote;
-                case 2: return ViewName.LogInteraction;
-                case 3: return ViewName.ViewNotes;
+                case 2: return ViewName.ViewNotes;
+                case 3: return ViewName.LogInteraction;
                 case 4: return ViewName.ViewInteractions;
                 case 5: return ViewName.EditPerson;
                 case 6:
